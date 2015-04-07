@@ -94,7 +94,9 @@ function EquipmentUpgradeSystem(_,p,_,_)
 			local UpEntry = ItemUpData[equip:GetEntry()]["up"]
 			p:GossipMenuAddItem(0,"         可升级至：\n|TInterface/ICONS/"..ItemDisplay[DBItemData[UpEntry]]..":40:40:-15:12|t"..GetItemLink(UpEntry),1,1000)
 			local TextTem = "|TInterface/ICONS/"..ItemDisplay[equip:GetDisplayId()]..":40:40:-15:12|t"
-			p:GossipMenuAddItem(0,"         |cFF0066CC需原物品： |r\n"..TextTem..GetItemLink(equip:GetEntry()).." x "..ItemUpData[equip:GetEntry()]["num"],1,1000)
+			if ItemUpData[equip:GetEntry()]["num"] ~= 0 then 
+				p:GossipMenuAddItem(0,"         |cFF0066CC需原物品： |r\n"..TextTem..GetItemLink(equip:GetEntry()).." x "..ItemUpData[equip:GetEntry()]["num"],1,1000)
+			end
 			for i=1,clNum do
 				if ItemUpData[equip:GetEntry()]["cl"]["id"..i] ~=0 then
 					local ItemIcon = "|TInterface/ICONS/"..ItemDisplay[DBItemData[ItemUpData[equip:GetEntry()]["cl"]["id"..i]]]..":40:40:-15:12|t"..GetItemLink(ItemUpData[equip:GetEntry()]["cl"]["id"..i])
